@@ -1,0 +1,91 @@
+.TH ha 1 "3 Jul 2008" "ha 0.999BETA" "HA archiver"
+.SH NAME
+ha \- a small file archiver utility
+.SH SYNOPSIS
+.B ha
+.B <command>[<option><option>...]
+.I archive
+[
+.I "name \&..."
+]
+.SH DESCRIPTION
+After the program name comes a command name (single letter) and options (single
+letters, appended to the command name without a space).
+.SH COMMANDS
+.TP
+.B a[sdqemr012]
+Add files matching search pattern to archive.
+.TP
+.B e[aqty]
+Extract files matching search pattern from archive.
+.TP
+.B x[aqty]
+Extract files matching search pattern from archive using path information stored
+in archive.
+.TP
+.B l[f]
+List files currently in archive.
+.TP
+.B d[q]
+Delete files matching search pattern from archive.  If archive does not contain
+any files after deletion it is removed.
+.TP
+.B f[sdqemr012]
+Freshen files in archive. All files matching search pattern and newer than
+version already in archive are updated to archive.
+.TP
+.B u[sdqemr012]
+Update files to archive. All files matching search pattern that are newer than
+version already in archive or are not yet in archive are updated to archive.
+.TP
+.B t[q]
+Test files in archive.
+.SH OPTIONS
+.TP
+.B 0,1,2
+Try compression method #. More than one can be specified.
+
+Methods are:
+  0-CPY  Simple copying of files.    
+  1-ASC Default method using sliding window dictionary followed by arithmetic
+        coder. Offers quite good compression on wide variety of file types.
+  2-HSC Compression method based on finite context model and arithmetic
+        coder. Quite slow for binary data, but offers very good compression
+        especially for longer text files.
+.TP
+.B y
+Assume answer yes on all questions.
+.TP
+.B t
+Touch files when extracting. Sets file times to current machine time.
+.TP
+.B r
+Recurse through subdirectories while searching for files matching search
+pattern.
+.TP
+.B f
+Full listing of stored file information.
+.TP
+.B m
+Move files when archiving. Files are removed from disk after they are
+successfully written to archive.
+.TP
+.B a
+Set system specific file attributes when extracting files.
+.TP
+.B s
+Find special files when archiving.
+.TP
+.B e
+Do not store pathname information.
+.TP
+.B q
+Quiet operation.
+.TP
+.B d
+Make separate entries for directories. Saves information about empty
+directories, directory attributes etc. in archive.
+.SH AUTHOR
+This manual page was written by Mikhail Gusarov <dottedmag@dottedmag.net> for
+Debian GNU/Linux system (but may be used by others).
+
